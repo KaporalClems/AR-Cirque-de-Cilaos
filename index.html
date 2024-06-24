@@ -4,19 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Cirque de Cilaos</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="ar-container"></div>
-    <div id="ui">
-        <div id="compass">N</div>
-        <button id="screenshot">📷</button>
-        <button id="zoom-out">➖</button>
-        <button id="zoom-in">➕</button>
+    <a-scene embedded arjs>
+        <a-assets>
+            <img id="compass-img" src="assets/compass.png" alt="Compass">
+        </a-assets>
+        
+        <!-- Sommets avec les nouvelles coordonnées -->
+        <a-entity gps-entity-place="latitude: -21.090538; longitude: 55.478462">
+            <a-text value="Piton des Neiges (Altitude 3 070 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
+        </a-entity>
+        <a-entity gps-entity-place="latitude: -21.104000; longitude: 55.467000">
+            <a-text value="Grand Bénare (Altitude 2 898 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="grand-benare"></a-text>
+        </a-entity>
+        <a-entity gps-entity-place="latitude: -21.108000; longitude: 55.458000">
+            <a-text value="Petit Bénare (Altitude 2 576 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="petit-benare"></a-text>
+        </a-entity>
+        <a-entity gps-entity-place="latitude: -21.113000; longitude: 55.462000">
+            <a-text value="Piton des Neiges (Altitude 3 071 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
+        </a-entity>
+        
+        <!-- Caméra AR avec boussole -->
+        <a-camera gps-camera rotation-reader>
+            <a-image id="compass" src="#compass-img" position="0 -0.5 -3" scale="1 1 1">
+                <a-entity id="compass-needle" geometry="primitive: plane; height: 0.4; width: 0.1" material="color: red" position="0 0.05 0" rotation="0 0 90"></a-entity>
+            </a-image>
+        </a-camera>
+    </a-scene>
+
+    <!-- Boîte de dialogue pour afficher les informations -->
+    <div id="info-box">
+        <p id="info-text"></p>
+        <button onclick="closeInfoBox()">Fermer</button>
     </div>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://rawcdn.githack.com/jeromeetienne/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
-    <script src="script.js"></script>
+
+    <!-- Icônes de commande -->
+    <div id="controls">
+        <button id="take-photo" onclick="takePhoto()">📷</button>
+        <button id="zoom-in" onclick="zoomIn()">🔍 x1</button>
+        <button id="zoom-out" onclick="zoomOut()">🔍 x2</button>
+    </div>
+
+    <!-- Barre de tâches -->
+    <div id="status-bar">
+        <p id="user-location">Position: En cours de récupération...</p>
+        <p id="user-altitude">Altitude: En cours de récupération...</p>
+    </div>
+
+    <script src="js/scripts.js"></script>
 </body>
 </html>
-
