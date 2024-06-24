@@ -23,8 +23,13 @@
         <a-entity gps-entity-place="latitude: -21.113000; longitude: 55.462000">
             <a-text value="Piton des Neiges (Altitude 3 071 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
         </a-entity>
-        <!-- Caméra AR -->
-        <a-camera gps-camera rotation-reader></a-camera>
+        
+        <!-- Caméra AR avec boussole -->
+        <a-camera gps-camera rotation-reader>
+            <a-entity id="compass" position="0 -0.5 -3" scale="1.5 1.5 1.5" geometry="primitive: plane; height: 0.5; width: 0.5" material="color: #000; opacity: 0.5">
+                <a-entity id="compass-needle" geometry="primitive: plane; height: 0.4; width: 0.1" material="color: red" position="0 0.05 0" rotation="0 0 90"></a-entity>
+            </a-entity>
+        </a-camera>
     </a-scene>
 
     <!-- Boîte de dialogue pour afficher les informations -->

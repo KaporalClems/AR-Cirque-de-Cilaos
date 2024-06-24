@@ -12,6 +12,17 @@ document.addEventListener('DOMContentLoaded', function () {
             showInfoBox(sommet.info);
         });
     });
+
+    window.addEventListener('deviceorientation', function (event) {
+        const compassNeedle = document.querySelector('#compass-needle');
+        if (event.webkitCompassHeading) {
+            // iOS non-standard
+            compassNeedle.object3D.rotation.z = THREE.Math.degToRad(event.webkitCompassHeading);
+        } else if (event.alpha) {
+            // Standard
+            compassNeedle.object3D.rotation.z = THREE.Math.degToRad(360 - event.alpha);
+        }
+    });
 });
 
 function showInfoBox(info) {
