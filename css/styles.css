@@ -1,6 +1,9 @@
 body { 
     margin: 0; 
     overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #info-box {
@@ -13,6 +16,7 @@ body {
     color: #FFF;
     padding: 10px;
     border-radius: 5px;
+    z-index: 1000;
 }
 
 #controls {
@@ -22,6 +26,7 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
+    z-index: 1000;
 }
 
 #controls button {
@@ -35,13 +40,14 @@ body {
 
 #compass {
     position: absolute;
-    bottom: 60px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.5);
     color: #FFF;
     padding: 10px;
     border-radius: 5px;
+    z-index: 1000;
 }
 
 #status-bar {
@@ -54,6 +60,7 @@ body {
     text-align: center;
     padding: 5px 0;
     font-size: 14px;
+    z-index: 1000;
 }
 
 #status-bar p {
