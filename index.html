@@ -6,98 +6,34 @@
     <title>AR Cirque de Cilaos</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; }
-        #info-box {
-            display: none;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #FFF;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <a-scene embedded arjs>
-        <!-- Sommets -->
-        <a-entity gps-entity-place="latitude: -21.115141; longitude: 55.471035">
+        <a-assets>
+            <img id="compass-img" src="assets/compass.png" alt="Compass">
+        </a-assets>
+        
+        <!-- Sommets avec les nouvelles coordonnées -->
+        <a-entity gps-entity-place="latitude: -21.090538; longitude: 55.478462">
             <a-text value="Piton des Neiges (Altitude 3 070 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
         </a-entity>
         <a-entity gps-entity-place="latitude: -21.104000; longitude: 55.467000">
-            <a-text value="Grand Bénare (Altitude 2 896 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="grand-benare"></a-text>
+            <a-text value="Grand Bénare (Altitude 2 898 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="grand-benare"></a-text>
         </a-entity>
-        <a-entity gps-entity-place="latitude: -21.126000; longitude: 55.442000">
-            <a-text value="Col du Taïbit (Altitude 2 081 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="col-taibit"></a-text>
+        <a-entity gps-entity-place="latitude: -21.108000; longitude: 55.458000">
+            <a-text value="Petit Bénare (Altitude 2 576 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="petit-benare"></a-text>
         </a-entity>
-        <a-entity gps-entity-place="latitude: -21.098000; longitude: 55.457000">
-            <a-text value="Petit Bénare (Altitude 2 600 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="petit-benare"></a-text>
+        <a-entity gps-entity-place="latitude: -21.113000; longitude: 55.462000">
+            <a-text value="Piton des Neiges (Altitude 3 071 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
         </a-entity>
-        <a-entity gps-entity-place="latitude: -21.106944; longitude: 55.442500">
-            <a-text value="Les Trois Salazes (Altitude 2 132 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="trois-salazes"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.118000; longitude: 55.460000">
-            <a-text value="Gros Morne (Altitude 3 019 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="gros-morne"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.119000; longitude: 55.477000">
-            <a-text value="Côteaux de Kerveguen (Altitude 2 206 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="kerveguen"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.143000; longitude: 55.469000">
-            <a-text value="Le Bonnet de Prêtre (Altitude 1 710 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="bonnet-pretre"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.131000; longitude: 55.482000">
-            <a-text value="La Roche Merveilleuse (Altitude 1 435 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="roche-merveilleuse"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.152000; longitude: 55.495000">
-            <a-text value="La Tête de Chien (Altitude 2 207 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="tete-chien"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.170000; longitude: 55.433000">
-            <a-text value="La Fenêtre des Makes (Altitude 1 587 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="fenetre-makes"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.09372; longitude: 55.47807">
-            <a-text value="La Dent (Altitude 3 200 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="dent"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.09114; longitude: 55.47407">
-            <a-text value="Tour du Grand Saisissement (Altitude 3 013 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="tour-grand-saisissement"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.08863; longitude: 55.4703">
-            <a-text value="Pic de l'Oeuf (Altitude 2 958 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="pic-oeuf"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.09953; longitude: 55.48004">
-            <a-text value="Piton des Neiges (Altitude 3 070 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.1122; longitude: 55.4971">
-            <a-text value="Refuge de la Caverne Dufour (Altitude 2 478 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="refuge-caverne-dufour"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.128; longitude: 55.5061">
-            <a-text value="Côteaux de Kerveguen (Altitude 2 206 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="coteaux-kerveguen"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.1438; longitude: 55.4965">
-            <a-text value="Piton Béthoune (Altitude 1 613 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-bethoune"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.10876; longitude: 55.43938">
-            <a-text value="La Tête de Chien (Altitude 2 207 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="tete-chien"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.18536; longitude: 55.43308">
-            <a-text value="La Fenêtre des Makes (Altitude 1 587 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="fenetre-makes"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.1226; longitude: 55.4686">
-            <a-text value="Ilet à Cordes (Altitude 1 204 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="ilet-a-cordes"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.1151; longitude: 55.4711">
-            <a-text value="Cilaos (Altitude 1 200 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="cilaos"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.1292; longitude: 55.4652">
-            <a-text value="Bras Sec (Altitude 1 200 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="bras-sec"></a-text>
-        </a-entity>
-        <a-entity gps-entity-place="latitude: -21.1444; longitude: 55.4792">
-            <a-text value="Palmiste Rouge (Altitude 1 240 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="palmiste-rouge"></a-text>
-        </a-entity>
-        <!-- Caméra AR -->
-        <a-camera gps-camera rotation-reader></a-camera>
+        
+        <!-- Caméra AR avec boussole -->
+        <a-camera gps-camera rotation-reader>
+            <a-image id="compass" src="#compass-img" position="0 -0.5 -3" scale="1 1 1">
+                <a-entity id="compass-needle" geometry="primitive: plane; height: 0.4; width: 0.1" material="color: red" position="0 0.05 0" rotation="0 0 90"></a-entity>
+            </a-image>
+        </a-camera>
     </a-scene>
 
     <!-- Boîte de dialogue pour afficher les informations -->
@@ -106,53 +42,7 @@
         <button onclick="closeInfoBox()">Fermer</button>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const sommets = [
-                { id: 'piton-des-neiges', info: 'Piton des Neiges : Le point culminant de La Réunion avec une altitude de 3 070 mètres.' },
-                { id: 'grand-benare', info: 'Grand Bénare : Un des plus hauts sommets de La Réunion avec une altitude de 2 896 mètres.' },
-                { id: 'col-taibit', info: 'Col du Taïbit : Un col de montagne situé dans le massif de La Réunion, culminant à 2 081 mètres.' },
-                { id: 'petit-benare', info: 'Petit Bénare : Une montagne à La Réunion avec une altitude de 2 600 mètres.' },
-                { id: 'trois-salazes', info: 'Les Trois Salazes : Trois pics rocheux emblématiques de La Réunion avec une altitude de 2 132 mètres.' },
-                { id: 'gros-morne', info: 'Gros Morne : Un sommet situé dans le massif de La Réunion, culminant à 3 019 mètres.' },
-                { id: 'kerveguen', info: 'Côteaux de Kerveguen : Un sommet de La Réunion avec une altitude de 2 206 mètres.' },
-                { id: 'bonnet-pretre', info: 'Le Bonnet de Prêtre : Un sommet caractéristique de La Réunion avec une altitude de 1 710 mètres.' },
-                { id: 'roche-merveilleuse', info: 'La Roche Merveilleuse : Un site panoramique populaire à La Réunion, culminant à 1 435 mètres.' },
-                { id: 'tete-chien', info: 'La Tête de Chien : Un sommet particulier de La Réunion, culminant à 2 207 mètres.' },
-                { id: 'fenetre-makes', info: 'La Fenêtre des Makes : Un site d’observation offrant une vue imprenable sur le cirque de Cilaos, avec une altitude de 1 587 mètres.' },
-                { id: 'dent', info: 'La Dent : Un sommet avec une altitude de 3 200 mètres.' },
-                { id: 'tour-grand-saisissement', info: 'Tour du Grand Saisissement : Un sommet avec une altitude de 3 013 mètres.' },
-                { id: 'pic-oeuf', info: 'Pic de l\'Oeuf : Un sommet avec une altitude de 2 958 mètres.' },
-                { id: 'refuge-caverne-dufour', info: 'Refuge de la Caverne Dufour : Un refuge de montagne situé à une altitude de 2 478 mètres.' },
-                { id: 'coteaux-kerveguen', info: 'Côteaux de Kerveguen : Un sommet avec une altitude de 2 206 mètres.' },
-                { id: 'piton-bethoune', info: 'Piton Béthoune : Un sommet avec une altitude de 1 613 mètres.' },
-                { id: 'tete-chien', info: 'La Tête de Chien : Un sommet particulier de La Réunion, culminant à 2 207 mètres.' },
-                { id: 'fenetre-makes', info: 'La Fenêtre des Makes : Un site d’observation offrant une vue imprenable sur le cirque de Cilaos, avec une altitude de 1 587 mètres.' },
-                { id: 'ilet-a-cordes', info: 'Ilet à Cordes : Un écart de Cilaos avec une altitude de 1 204 mètres.' },
-                { id: 'cilaos', info: 'Cilaos : Une commune située à une altitude de 1 200 mètres.' },
-                { id: 'bras-sec', info: 'Bras Sec : Un écart de Cilaos avec une altitude de 1 200 mètres.' },
-                { id: 'palmiste-rouge', info: 'Palmiste Rouge : Un écart de Cilaos avec une altitude de 1 240 mètres.' },
-            ];
-
-            sommets.forEach(sommet => {
-                const element = document.querySelector(`#${sommet.id}`);
-                element.addEventListener('click', function () {
-                    showInfoBox(sommet.info);
-                });
-            });
-        });
-
-        function showInfoBox(info) {
-            const infoBox = document.getElementById('info-box');
-            const infoText = document.getElementById('info-text');
-            infoText.textContent = info;
-            infoBox.style.display = 'block';
-        }
-
-        function closeInfoBox() {
-            const infoBox = document.getElementById('info-box');
-            infoBox.style.display = 'none';
-        }
-    </script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
+
