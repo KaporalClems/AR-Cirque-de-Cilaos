@@ -3,6 +3,7 @@ body {
     overflow: hidden;
     font-family: Arial, sans-serif;
 }
+
 #ar-container {
     position: absolute;
     top: 0;
@@ -10,17 +11,42 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
 #ui {
     position: absolute;
     top: 10px;
     left: 10px;
     display: flex;
     flex-direction: column;
+    z-index: 10;
 }
+
+#compass {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
 button {
     margin-bottom: 10px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
+button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+a-entity {
+    font-size: 14px;
+    color: white;
+}
