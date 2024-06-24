@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const sommets = [
         { id: 'piton-des-neiges', info: 'Piton des Neiges : Le point culminant de La Réunion avec une altitude de 3 070 mètres.' },
+        { id: 'grand-benare', info: 'Grand Bénare : Un des plus hauts sommets de La Réunion avec une altitude de 2 898 mètres.' },
+        { id: 'petit-benare', info: 'Petit Bénare : Une montagne à La Réunion avec une altitude de 2 576 mètres.' }
         // Ajouter d'autres sommets ici
     ];
 

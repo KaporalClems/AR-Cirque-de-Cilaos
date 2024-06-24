@@ -10,13 +10,24 @@
 </head>
 <body>
     <a-scene embedded arjs>
-        <a-entity gps-entity-place="latitude: -21.115141; longitude: 55.471035">
+        <!-- Sommets avec les nouvelles coordonnées -->
+        <a-entity gps-entity-place="latitude: -21.090538; longitude: 55.478462">
             <a-text value="Piton des Neiges (Altitude 3 070 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
         </a-entity>
-        <!-- Ajouter d'autres sommets ici -->
+        <a-entity gps-entity-place="latitude: -21.104000; longitude: 55.467000">
+            <a-text value="Grand Bénare (Altitude 2 898 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="grand-benare"></a-text>
+        </a-entity>
+        <a-entity gps-entity-place="latitude: -21.108000; longitude: 55.458000">
+            <a-text value="Petit Bénare (Altitude 2 576 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="petit-benare"></a-text>
+        </a-entity>
+        <a-entity gps-entity-place="latitude: -21.113000; longitude: 55.462000">
+            <a-text value="Piton des Neiges (Altitude 3 071 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
+        </a-entity>
+        <!-- Caméra AR -->
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
+    <!-- Boîte de dialogue pour afficher les informations -->
     <div id="info-box">
         <p id="info-text"></p>
         <button onclick="closeInfoBox()">Fermer</button>
