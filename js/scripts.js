@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 'cilaos', info: 'Cilaos : Une commune située à une altitude de 1 200 mètres.' },
         { id: 'bras-sec', info: 'Bras Sec : Un écart de Cilaos avec une altitude de 1 200 mètres.' },
         { id: 'palmiste-rouge', info: 'Palmiste Rouge : Un écart de Cilaos avec une altitude de 1 240 mètres.' },
+    
+    AFRAME.registerComponent('rotation-reader', {
+  tick: function () {
+    var needle = document.getElementById('compass-needle');
+    var camera = this.el;
+    var rotation = camera.getAttribute('rotation').y;
+    needle.setAttribute('rotation', {x: 0, y: 0, z: -rotation});
+  }
+});
     ];
 
     sommets.forEach(sommet => {
