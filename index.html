@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Cirque de Cilaos</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a-scene embedded arjs>
+        <a-entity gps-entity-place="latitude: -21.115141; longitude: 55.471035">
+            <a-text value="Piton des Neiges (Altitude 3 070 m)" scale="10 10 10" color="#FF0000" look-at="[gps-camera]" id="piton-des-neiges"></a-text>
+        </a-entity>
+        <!-- Ajouter d'autres sommets ici -->
+        <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+
+    <div id="info-box">
+        <p id="info-text"></p>
+        <button onclick="closeInfoBox()">Fermer</button>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
