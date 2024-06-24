@@ -1,52 +1,62 @@
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+body { 
+    margin: 0; 
+    overflow: hidden; 
 }
 
-#ar-container {
+#info-box {
+    display: none;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #FFF;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-#ui {
+#controls {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
-    z-index: 10;
+    gap: 10px;
+}
+
+#controls button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
 }
 
 #compass {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 20px;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.5);
-    color: white;
+    color: #FFF;
+    padding: 10px;
     border-radius: 5px;
+}
+
+#status-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #FFF;
     text-align: center;
-}
-
-button {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-a-entity {
+    padding: 5px 0;
     font-size: 14px;
-    color: white;
+}
+
+#status-bar p {
+    margin: 0;
+    padding: 2px 0;
 }
