@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const sommets = [
         { id: 'piton-des-neiges', info: 'Piton des Neiges : Le point culminant de La Réunion avec une altitude de 3 070 mètres.' },
-        { id: 'grand-benare', info: 'Grand Bénare : Un des plus hauts sommets de La Réunion avec une altitude de 2 898 mètres.' },
-        { id: 'petit-benare', info: 'Petit Bénare : Une montagne à La Réunion avec une altitude de 2 576 mètres.' }
-        // Ajouter d'autres sommets ici
+        { id: 'grand-benare', info: 'Grand Bénare : Un des plus hauts sommets de La Réunion avec une altitude de 2 896 mètres.' },
+        // Ajoutez d'autres sommets ici
     ];
 
     sommets.forEach(sommet => {
@@ -13,18 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    window.addEventListener('deviceorientation', function (event) {
-        const compassNeedle = document.querySelector('#compass-needle');
-        if (event.webkitCompassHeading) {
-            // iOS non-standard
-            compassNeedle.object3D.rotation.z = THREE.Math.degToRad(event.webkitCompassHeading);
-        } else if (event.alpha) {
-            // Standard
-            compassNeedle.object3D.rotation.z = THREE.Math.degToRad(360 - event.alpha);
-        }
+    document.getElementById('capture-photo').addEventListener('click', function () {
+        capturePhoto();
     });
-
-    getUserLocation();
 });
 
 function showInfoBox(info) {
@@ -39,50 +29,21 @@ function closeInfoBox() {
     infoBox.style.display = 'none';
 }
 
-function takePhoto() {
-    const sceneEl = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
-    const link = document.createElement('a');
-    link.href = sceneEl.toDataURL('image/png');
-    link.download = 'photo.png';
-    link.click();
-}
+function capturePhoto() {
+    const canvas = document.createElement('canvas');
+    const video = document.querySelector('video');
+    
+    if (video) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/png');
 
-function zoomIn() {
-    const cameraEl = document.querySelector('a-camera');
-    const currentZoom = cameraEl.getAttribute('zoom');
-    cameraEl.setAttribute('zoom', currentZoom + 1);
-}
-
-function zoomOut() {
-    const cameraEl = document.querySelector('a-camera');
-    const currentZoom = cameraEl.getAttribute('zoom');
-    cameraEl.setAttribute('zoom', currentZoom - 1);
-}
-
-function getUserLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            const { latitude, longitude } = position.coords;
-            document.getElementById('user-location').textContent = `Position: Lat ${latitude.toFixed(6)}, Lon ${longitude.toFixed(6)}`;
-            getAltitude(latitude, longitude);
-        }, error => {
-            document.getElementById('user-location').textContent = 'Position: Impossible de récupérer la position.';
-        });
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'photo.png';
+        link.click();
     } else {
-        document.getElementById('user-location').textContent = 'Position: La géolocalisation n\'est pas supportée par ce navigateur.';
+        alert('Vidéo non trouvée pour capturer la photo');
     }
-}
-
-function getAltitude(latitude, longitude) {
-    const apiUrl = `https://api.open-elevation.com/api/v1/lookup?locations=${latitude},${longitude}`;
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const altitude = data.results[0].elevation;
-            document.getElementById('user-altitude').textContent = `Altitude: ${altitude} m`;
-        })
-        .catch(error => {
-            document.getElementById('user-altitude').textContent = 'Altitude: Impossible de récupérer l\'altitude.';
-        });
 }
