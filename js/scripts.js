@@ -139,6 +139,5 @@ if (navigator.geolocation) {
 
 // Close the info box
 function closeInfoBox() {
-    document.getElementById('info-box').style.display = 'none';
+    document.getElementById('info-dialogue-box').style.display = 'none';
 }
-
