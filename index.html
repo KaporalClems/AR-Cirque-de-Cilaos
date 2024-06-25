@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
- <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Cirque de Cilaos</title>
@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <div id="project-name">Nom du projet: AR Cirque de Cilaos</div>
+    <div id="user-position">Position: En cours de chargement...</div>
+
     <a-scene embedded arjs>
         <a-assets>
             <img id="compass-img" src="assets/compass.png" alt="Compass">
@@ -27,7 +30,7 @@
     
         
         <!-- Caméra AR avec boussole -->
-        <a-camera gps-camera rotation-reader>
+        <a-camera gps-camera rotation-reader id="ar-camera">
             <a-image id="compass" src="#compass-img" position="0 -0.5 -3" scale="1 1 1">
                 <a-entity id="compass-needle" geometry="primitive: plane; height: 0.4; width: 0.1" material="color: red" position="0 0.05 0" rotation="0 0 90"></a-entity>
             </a-image>
