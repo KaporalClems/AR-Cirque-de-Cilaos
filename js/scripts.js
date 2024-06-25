@@ -86,3 +86,59 @@ function getAltitude(latitude, longitude) {
             document.getElementById('user-altitude').textContent = 'Altitude: Impossible de récupérer l\'altitude.';
         });
 }
+let zoomLevel = 1;
+
+function zoomIn() {
+    zoomLevel *= 1.5;
+    updateCameraZoom();
+}
+
+function zoomOut() {
+    zoomLevel /= 1.5;
+    updateCameraZoom();
+}
+
+function updateCameraZoom() {
+    const camera = document.querySelector('#ar-camera');
+    camera.setAttribute('zoom', zoomLevel);
+}
+
+function takePhoto() {
+    const scene = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
+    const link = document.createElement('a');
+    link.href = scene.toDataURL('image/png');
+    link.download = 'screenshot.png';
+    link.click();
+}
+
+// Initialize screenshot component for A-Frame
+AFRAME.registerComponent('screenshot', {
+    init: function () {
+        const scene = this.el.sceneEl;
+        scene.setAttribute('screenshot', '');
+    }
+});
+
+// Get the user's position and display it
+function updateUserPosition(position) {
+    const lat = position.coords.latitude.toFixed(6);
+    const lon = position.coords.longitude.toFixed(6);
+    document.getElementById('user-position').innerText = `Position: Latitude: ${lat}, Longitude: ${lon}`;
+}
+
+function handleLocationError(error) {
+    console.error(error);
+    document.getElementById('user-position').innerText = 'Position: Impossible d\'obtenir la position';
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(updateUserPosition, handleLocationError);
+} else {
+    document.getElementById('user-position').innerText = 'Position: Geolocation non supportée';
+}
+
+// Close the info box
+function closeInfoBox() {
+    document.getElementById('info-box').style.display = 'none';
+}
+
